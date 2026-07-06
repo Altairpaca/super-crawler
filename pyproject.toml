@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "super-crawler"
+version = "0.1.0"
+description = "可复用的多源数据采集框架 — 为Hermes profiles提供统一爬虫能力"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Altair"}]
+
+dependencies = [
+    "httpx>=0.27",
+    "beautifulsoup4>=4.12",
+    "aiohttp>=3.9",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+full = [
+    "semanticscholar>=0.7",
+]
+dev = [
+    "pytest>=8.0",
+]
+
+[project.scripts]
+scrawl = "super_crawler.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
